@@ -1,30 +1,25 @@
+'use client'
+
 import React, {useState} from 'react';
 import './bubbleSort.css'
 
 
 
-const genSwap = (j:number) => {
-    return (array:number[]) => {
-        console.log(`swapping ${j}th`)
-        const a = [...array]
-        const temp = a[j]
-        a[j] = a[j + 1]
-        a[j + 1] = temp
-        return a
-    }
-}
+// const genSwap = (j:number) => {
+//     return (array:number[]) => {
+//         console.log(`swapping ${j}th`)
+//         const a = [...array]
+//         const temp = a[j]
+//         a[j] = a[j + 1]
+//         a[j + 1] = temp
+//         return a
+//     }
+// }
 
 const swap = (a: number[], j: number) => {
-    const temp = a[j]
-    a[j] = a[j + 1]
-    a[j + 1] = temp
-    return a
-}
-
-const stepState = (swapIndex: number, i: number, j: number) => {
-    return (s: {a:number[]; i:number; j:number}) => ({
-        i, j, a: swapIndex ==-1 ? s.a : swap(s.a, swapIndex)
-    })
+    //Mutating the argument worked in Storybook, but in NextJS it appeared to do double swaps every time. Returning a mutated copy works in both.
+    console.log(`swapping ${a[j]} and ${a[j+1]} indexes ${j} and ${j+1}`)
+    return [...a.slice(0,j),a[j+1],a[j],...a.slice(j+2)]
 }
 
 export const BubbleSort = ({initialArray = [3,2,1]}) => {
@@ -32,25 +27,27 @@ export const BubbleSort = ({initialArray = [3,2,1]}) => {
     const step = () => {
         let {a,j,i} = s
         console.log(`step i=${i} j=${j} a=${a}`)
-        let swapIndex = -1
+
         if (a[j] > a[j+1]) {
-            swapIndex = j
+            a = swap(s.a, j)
         }
         if(j < a.length - 2 - i){
             j++
         } else {
-            if(i < a.length){
+            if(i < a.length - 1){
                 i++
                 j=0
-            }
+            } 
         }
-        setS(stepState(swapIndex,i,j))
+
+        setS({i, j, a})
+
     }
     return (
         <>
         {s.a.map((e,i) => <div className="v1" 
             key={i}
-            style={{height: e*50, ...(i===s.j && s.i < s.a.length && {borderLeftColor: 'yellow'}) }}/>)}
+            style={{height: e*50, ...(i===s.j && s.i < s.a.length - 1 && {borderLeftColor: 'yellow'}) }}/>)}
         <button type="button" onClick={step}>Step</button>
         </>
     )
