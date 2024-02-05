@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import _ from 'lodash'
 import { BubbleSort } from './BubbleSort';
 
 const meta = {
@@ -23,6 +23,8 @@ export const Three: Story = {
 
 export const Many: Story = {
     args: {
-        initialArray: [9,10,11,12,13,14,15,16,17,6,8,3,7,5,4,1,2,]
+        initialArray: _.shuffle(_.range(1,50)),
+        heightMultiplier: 6,
+        stepDelayMs: 100
     }
 } 
