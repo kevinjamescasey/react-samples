@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import _ from 'lodash'
-import { BubbleSort } from './BubbleSort';
+import { BubbleSort } from '../components/BubbleSort';
 
 const meta = {
     component: BubbleSort

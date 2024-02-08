@@ -28,12 +28,13 @@ export const BubbleSort = ({initialArray = [5,4,3,2,1], heightMultiplier = 20, s
         }
         if(j < a.length - 2 - i){
             j++
-        } else {
-            if(i < a.length - 1){
+        } else if(i < a.length - 1){
                 i++
                 j=0
-            } 
+        } else {
+            setIsRunning(false)
         }
+        
 
         setS({i, j, a})
     }
@@ -48,8 +49,11 @@ export const BubbleSort = ({initialArray = [5,4,3,2,1], heightMultiplier = 20, s
         {s.a.map((e,i) => <div className="v1" 
             key={i}
             style={{height: e * heightMultiplier, ...(i===s.j && s.i < s.a.length - 1 && {borderLeftColor: 'yellow'}) }}/>)}
-        <button type="button" onClick={step}>Step</button>
-        <button type="button" onClick={() => setIsRunning(!isRunning)}>{isRunning? 'Stop' : 'Go'}</button>
+        <div className="container mx-auto px-4">
+            Bubble Sort
+            <button type="button" onClick={step} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Step</button>
+            <button type="button" onClick={() => setIsRunning(!isRunning)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{isRunning? 'Stop' : 'Go'}</button>
+        </div>
         </>
     )
 }

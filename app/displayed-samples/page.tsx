@@ -1,5 +1,6 @@
 import Image from "next/image";
-import {BubbleSort} from '../../stories/BubbleSort'
+import {BubbleSort} from '../../components/BubbleSort'
+import { InsertionSort } from "@/components/InsertionSort";
 import _ from 'lodash'
 export default function Home() {
   return (
@@ -10,7 +11,12 @@ export default function Home() {
       <div >
         <BubbleSort initialArray={_.shuffle(_.range(1,100))} heightMultiplier={2} stepDelayMs={100}/>
       </div>
-     
+      <div>
+        <InsertionSort />
+      </div>
+      <div >
+        <InsertionSort initialArray={_.shuffle(_.range(1,100))} heightMultiplier={2} stepDelayMs={100}/>
+      </div>
 
       
     </main>
