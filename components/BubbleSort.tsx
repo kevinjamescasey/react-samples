@@ -47,11 +47,13 @@ export const BubbleSort = ({ initialArray = [5, 4, 3, 2, 1], heightMultiplier = 
     return (
 
 
-        <div className="flex flex-row space-x-2">
-            <div className="grid place-content-start space-y-0.5 " >
-                <span className="inline-block align-middle">Bubble Sort</span>
+        <div className="flex flex-row gap-5">
+            <div className="flex flex-col space-y-1" >
                 <button type="button" onClick={step} className="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded">Step</button>
                 <button type="button" onClick={() => setIsRunning(!isRunning)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded">{isRunning ? 'Stop' : 'Go'}</button>
+                <div className="grow flex flex-col justify-end">
+                    <span className="">Bubble Sort</span>
+                </div>
             </div>
 
             <div>
