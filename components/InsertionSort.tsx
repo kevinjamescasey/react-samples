@@ -26,11 +26,11 @@ export const InsertionSort = ({ initialArray = [5, 4, 3, 2, 1], heightMultiplier
         if (j > 0 && a[j - 1] > a[j]) {
             a = swap(s.a, j - 1)
             j--
+        } else if (i < a.length) {
+            i++
+            j = i
         } else {
-            if (i < a.length) {
-                i++
-                j = i
-            }
+            setIsRunning(false)
         }
 
         setS({ i, j, a })
