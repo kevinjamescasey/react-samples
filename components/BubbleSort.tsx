@@ -48,15 +48,15 @@ export const BubbleSort = ({ initialArray = [5, 4, 3, 2, 1], heightMultiplier = 
 
 
         <div className="flex flex-row gap-5">
-            <div className="flex flex-col space-y-1" >
+            <div className="flex flex-col space-y-1 justify-end" >
                 <button type="button" onClick={step} className="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded">Step</button>
                 <button type="button" onClick={() => setIsRunning(!isRunning)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded">{isRunning ? 'Stop' : 'Go'}</button>
-                <div className="grow flex flex-col justify-end">
+                <div className="pt-5 flex flex-col justify-end">
                     <span className="">Bubble Sort</span>
                 </div>
             </div>
 
-            <div>
+            <div className="flex items-end">
                 {s.a.map((e, i) => <div className="v1"
                     key={i}
                     style={{ height: e * heightMultiplier, ...(i === s.j && s.i < s.a.length - 1 && { borderLeftColor: 'yellow' }) }} />)}
